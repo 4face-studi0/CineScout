@@ -5,6 +5,9 @@ plugins {
 kotlin {
 
     jvm()
+    js {
+        browser()
+    }
 
     @Suppress("UNUSED_VARIABLE") // source sets
     sourceSets {
@@ -24,7 +27,7 @@ kotlin {
 
                     // Other
                     klock(),
-                    koin("core-ext")
+                    koin("core")
 
                     // SqlDelight
                     // sqlDelight()
@@ -35,8 +38,7 @@ kotlin {
         val commonTest by getting {
             dependencies {
                 implementation(
-                    *commonTestDependencies(),
-                    mockk()
+                    *commonTestDependencies()
                 )
             }
         }
@@ -45,6 +47,7 @@ kotlin {
             dependencies {
                 implementation(
                     *jvmTestDependencies(),
+                    mockk(),
                     sqlDelightDriver("sqlite")
                 )
             }

@@ -5,6 +5,9 @@ plugins {
 kotlin {
 
     jvm()
+    js {
+        browser()
+    }
 
     @Suppress("UNUSED_VARIABLE") // source sets
     sourceSets {
@@ -21,7 +24,7 @@ kotlin {
                     kotlin("stdlib-common"),
 
                     // Koin
-                    koin("core-ext")
+                    koin("core")
                 )
             }
         }

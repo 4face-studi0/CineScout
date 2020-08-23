@@ -19,18 +19,15 @@ kotlin {
 
                     // Modules
                     entities(),
+                    domain(),
+                    client(),
 
                     // Kotlin
                     kotlin("stdlib-common"),
-                    serialization("runtime"),
+                    coroutines("core"),
 
                     // Koin
-                    koin("core"),
-
-                    // Ktor
-                    ktorClient("core"),
-                    ktorClient("serialization"),
-                    ktorClient("logging")
+                    koin("core")
                 )
             }
         }
@@ -43,11 +40,22 @@ kotlin {
             }
         }
 
-        val jvmMain by getting {
+        val jsMain by getting {
+            repositories {
+                maven("https://kotlin.bintray.com/kotlin-js-wrappers")
+            }
             dependencies {
                 implementation(
-                    ktorClient("apache"),
-                    ktorClient("logging-jvm")
+                    // React
+                    Js.kotlinReact(),
+                    Js.kotlinReact("dom"),
+                    npm(Js.react(), REACT_VERSION),
+                    npm(Js.react("dom"), REACT_VERSION),
+
+                    // Kotlin styled
+                    Js.kotlinStyled(),
+                    npm(Js.styledComponents(), STYLED_COMPONENTS_VERSION),
+                    npm(Js.inlineStylePrefixer(), INLINE_STYLE_PREFIXER_VERSION)
                 )
             }
         }
@@ -55,7 +63,8 @@ kotlin {
         val jvmTest by getting {
             dependencies {
                 implementation(
-                    *jvmTestDependencies()
+                    *jvmTestDependencies(),
+                    mockk()
                 )
             }
         }

@@ -6,6 +6,9 @@ plugins {
 kotlin {
 
     jvm()
+    js {
+        browser()
+    }
 
     @Suppress("UNUSED_VARIABLE") // source sets
     sourceSets {
@@ -22,7 +25,7 @@ kotlin {
                     serialization("runtime"),
 
                     // Koin
-                    koin("core-ext")
+                    koin("core")
                 )
             }
         }

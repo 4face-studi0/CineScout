@@ -6,6 +6,9 @@ plugins {
 kotlin {
 
     jvm()
+    js {
+        browser()
+    }
 
     @Suppress("UNUSED_VARIABLE") // source sets
     sourceSets {
@@ -26,7 +29,7 @@ kotlin {
 
                     // Other
                     klock(),
-                    koin("core-ext"),
+                    koin("core"),
 
                     // Ktor
                     ktorClient("core")

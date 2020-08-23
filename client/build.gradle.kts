@@ -6,6 +6,9 @@ plugins {
 kotlin {
 
     jvm()
+    js {
+        browser()
+    }
 
     @Suppress("UNUSED_VARIABLE") // source sets
     sourceSets {
@@ -25,7 +28,7 @@ kotlin {
                     coroutines("core"),
 
                     // Koin
-                    koin("core-ext")
+                    koin("core")
                 )
             }
         }
@@ -33,8 +36,7 @@ kotlin {
         val commonTest by getting {
             dependencies {
                 implementation(
-                    *commonTestDependencies(),
-                    mockk()
+                    *commonTestDependencies()
                 )
             }
         }
@@ -42,7 +44,8 @@ kotlin {
         val jvmTest by getting {
             dependencies {
                 implementation(
-                    *jvmTestDependencies()
+                    *jvmTestDependencies(),
+                    mockk()
                 )
             }
         }

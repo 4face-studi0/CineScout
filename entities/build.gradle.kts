@@ -6,6 +6,9 @@ plugins {
 kotlin {
 
     jvm()
+    js {
+        browser()
+    }
 
     @Suppress("UNUSED_VARIABLE") // source sets
     sourceSets {
@@ -23,7 +26,7 @@ kotlin {
                     coroutines("core"),
 
                     // Koin
-                    koin("core-ext")
+                    koin("core")
                 )
             }
         }

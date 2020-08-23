@@ -6,6 +6,8 @@ fun coroutines(moduleName: String) = kotlinx("coroutines-$moduleName") version C
 
 fun forface(moduleName: String) = "studio.forface:$moduleName"
 
+fun jetbrains(moduleName: String) = "org.jetbrains:$moduleName"
+
 fun klock() = "com.soywiz.korlibs.klock:klock" version KLOCK_VERSION
 fun koin(moduleName: String? = null) = "org.koin:koin${moduleName.module()}" version KOIN_VERSION
 fun kotlin(moduleName: String) = "org.jetbrains.kotlin:kotlin-$moduleName" version KOTLIN_VERSION
@@ -23,6 +25,14 @@ fun serialization(moduleName: String? = null) =
     kotlinx("serialization${moduleName.module()}") version SERIALIZATION_VERSION
 
 fun sqlDelightDriver(platform: String) = "com.squareup.sqldelight:$platform-driver:1.4.0" version SQLDELIGHT_VERSION
+
+object Js {
+    fun inlineStylePrefixer() = "inline-style-prefixer"
+    fun kotlinReact(moduleName: String? = null) = jetbrains("kotlin-react${moduleName.module()}") version KOTLIN_REACT_VERSION
+    fun kotlinStyled(moduleName: String? = null) = jetbrains("kotlin-styled${moduleName.module()}") version KOTLIN_STYLED_VERSION
+    fun react(moduleName: String? = null) = "react${moduleName.module()}"
+    fun styledComponents() = "styled-components"
+}
 
 // Groups
 fun commonTestDependencies() = arrayOf(
